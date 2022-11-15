@@ -8,8 +8,8 @@ import java.sql.Date;
 @Table(name = "students")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private Date dateOfBirth;
     private String address;
@@ -19,7 +19,7 @@ public class Student {
     public Student() {
     }
 
-    public Student(int id, String name, Date dateOfBirth, String address, String phoneNumber, String email) {
+    public Student(Long id, String name, Date dateOfBirth, String address, String phoneNumber, String email) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -28,11 +28,11 @@ public class Student {
         this.email = email;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface IStudentRepository extends JpaRepository<Student, Long> {
-//    @Query("SELECT * from students s where s.name like %?1%")
-//    public List<Student> search(String name);
+   Iterable<Student> findAllByNameContaining(String name);
 }

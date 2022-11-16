@@ -5,6 +5,7 @@ import com.example.manageclassfinal.repository.IStudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,5 +27,12 @@ public class StudentService implements  IStudentService{
     @Override
     public void remove(Long id){
         studentRepository.deleteById(id);
+    }
+    @Override
+    public Iterable<Student> findAllByName(String name){
+        if(name!=null){
+            return  studentRepository.findAllByNameContaining(name);
+        }
+        return studentRepository.findAll();
     }
 }

@@ -3,9 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Student</title>
+    <script type="text/javascript">
+      function clearSearch() {
+      window.location = "[[@{/students}]]";
+    }
+  </script>
 </head>
 <body>
 <a href="/create-student">Create new student</a>
+<form th:action="@{/search-students}">
+  Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+  &nbsp;
+  <input type="submit" value="Search" />
+  &nbsp;
+  <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+</form>
 <h1>Students</h1>
 <table border="1">
   <tr>

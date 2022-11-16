@@ -26,6 +26,7 @@
     <th>Address</th>
     <th>Phone Number</th>
     <th>Email</th>
+    <th>Classroom</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
@@ -36,6 +37,7 @@
       <td th:text="${student.address}"></td>
       <td th:text="${student.phoneNumber}"></td>
       <td th:text="${student.email}"></td>
+      <td th:text="${student.classroom?.name}"></td>
       <td><a th:href="@{/edit-student/__${student.id}__ }">Edit</a></td>
       <td><a th:href="@{/delete-student/__${student.id}__ }">Delete</a></td>
     </tr>

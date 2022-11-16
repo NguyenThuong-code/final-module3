@@ -1,6 +1,8 @@
 package com.example.manageclassfinal.controller;
 
+import com.example.manageclassfinal.model.Classroom;
 import com.example.manageclassfinal.model.Student;
+import com.example.manageclassfinal.service.classroom.IClassroomService;
 import com.example.manageclassfinal.service.student.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -15,6 +17,12 @@ import java.util.Optional;
 public class StudentController {
     @Autowired
     private IStudentService studentService;
+    @Autowired
+    private IClassroomService classroomService;
+    @ModelAttribute("classroom")
+    public Iterable<Classroom> allClassroom(){
+        return classroomService.findAll();
+    }
     @GetMapping("/create-student")
     public ModelAndView showCreateForm(){
         ModelAndView modelAndView= new ModelAndView("/student/create");

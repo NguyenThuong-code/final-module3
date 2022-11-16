@@ -1,6 +1,9 @@
 package com.example.manageclassfinal.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 
 
@@ -10,10 +13,17 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotEmpty
+    @Size(min = 3, max = 8, message = "Enter smaller than 8 and larger than 3 characters")
     private String name;
     private Date dateOfBirth;
+    @NotEmpty
     private String address;
+    @NotEmpty
+    @Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})\\b")
     private String phoneNumber;
+    @NotEmpty
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     private String email;
     @ManyToOne
     @JoinColumn(name = "classroom_id")
@@ -22,7 +32,15 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long id, String name, Date dateOfBirth, String address, String phoneNumber, String email, Classroom classroom) {
+    public Student(Long id,
+                   @NotEmpty  @Size(min = 3, max = 8, message = "Enter smaller than 8 and larger than 3 characters") String name,
+                   Date dateOfBirth,
+                   @NotEmpty String address,
+                   @NotEmpty
+                   @Pattern(regexp = "(84|0[3|5|7|8|9])+([0-9]{8})\\b")String phoneNumber,
+                   @NotEmpty
+                   @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")String email,
+                   Classroom classroom) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;

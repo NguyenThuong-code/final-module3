@@ -17,7 +17,8 @@
 
         <tr>
             <td>Name:</td>
-            <td><input type="text" th:field="*{name}"/></td>
+            <td><input type="text"  th:field="*{name}"/></td>
+            <a th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</a>
         </tr>
         <tr>
             <td>Date Of Birth:</td>
